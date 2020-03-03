@@ -1,0 +1,22 @@
+var rpc = require('json-rpc2');
+var server = rpc.Server.$create();
+
+
+function add(args, opt, callback) {
+    console.log(args);
+    var i;
+    var sum = 0;
+    for(i = 0; i <= args.length; i++){
+        sum += args[i];
+        //console.log('sum = ' + sum);
+    }
+    console.log('sum = ' + sum);
+    callback(null, sum);
+    
+}
+
+
+
+
+server.expose('add', add);
+server.listen(8000, 'localhost');
